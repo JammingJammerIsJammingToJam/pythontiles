@@ -1,9 +1,10 @@
 from parse import *
 import os
 class Decoder:
-  def __init__(self, filename, number):
+  def __init__(self, filename):
     self.filename = filename
-    self.number = number - 1
+  def num(self, number):
+    self.number = number
   def check_file(self):
     return os.path.isfile(self.filename)
   def file_contents(self):
@@ -21,6 +22,19 @@ class Decoder:
       list.append(text)
       i += len(text) + 1
     return list
-def NME_Decode(filename, number):
-  dcdr = Decoder(filename, number)
+def NME_Decode_Line(filename, number):
+  dcdr = Decoder(filename)
+  dcdr.num(number)
   return dcdr.decode()
+def NME_Decode_File(filename):
+  kale = Decoder(filename)
+  if not kale.check_file():
+    print("ERROR FILE NOT FOUND")
+    quit()
+  file = open(filename, "r")
+  length = len(file.readlines())
+  file.close()
+  lists = []
+  for i in range(0, length):
+    lists.append(NME_Decode_Line(filename, i))
+  return lists
