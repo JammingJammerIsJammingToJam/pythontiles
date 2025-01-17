@@ -4,12 +4,18 @@ class Decoder:
   def __init__(self, filename):
     self.filename = filename
   def num(self, number):
+    if number < 1 or number %1 != 0:
+      raise TypeError("Enter Correct Input")
     self.number = number
   def check_file(self):
     return os.path.isfile(self.filename)
   def file_contents(self):
-    with open(self.filename) as file:
-      return file.readlines()[self.number]
+    file = open(self.filename, "r")
+    content = file.readlines()
+    file.close()
+    returnval = content[self.number]
+    self.slashnum = int(content[0])
+    return returnval
   def decode(self):
     if not self.check_file():
       print("ERROR FILE NOT FOUND")
@@ -17,7 +23,7 @@ class Decoder:
     contents = self.file_contents()
     list = []
     i = 0
-    for j in range(0, 6):
+    for j in range(0, self.slashnum):
       text = parse(contents, i, "/")
       list.append(text)
       i += len(text) + 1
