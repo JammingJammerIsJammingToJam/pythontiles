@@ -1,4 +1,4 @@
-import .nmedecode as nme
+from . import nmedecode as nme
 
 class Board:
     # Setting Up Board

@@ -1,4 +1,4 @@
-from .parse import *
+from parse import *
 import os
 class Decoder:
   def __init__(self, filename):
