@@ -29,7 +29,7 @@ class Decoder:
     list = []
     i = 0
     for j in range(0, self.slashnum):
-      text = parse(contents, i, "/")
+      text = parse.parse(contents, i, "/")
       list.append(text)
       i += len(text) + 1
     return list
