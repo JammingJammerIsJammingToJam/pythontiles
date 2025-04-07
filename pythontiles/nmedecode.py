@@ -1,5 +1,6 @@
-from parse import *
+from . import parse
 import os
+
 class Decoder:
   def __init__(self, filename):
     self.number = None
