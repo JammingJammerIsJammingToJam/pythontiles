@@ -2,12 +2,16 @@ from parse import *
 import os
 class Decoder:
   def __init__(self, filename):
+    self.number = None
+    self.slashnum = None
     self.filename = filename
   def num(self, number):
     if number < 1 or number %1 != 0:
       raise TypeError("Enter Correct Input")
     self.number = number
   def check_file(self):
+    if not self.filename[-4:] == ".nme":
+      raise TypeError("Wrong File Type")
     return os.path.isfile(self.filename)
   def file_contents(self):
     file = open(self.filename, "r")
@@ -41,6 +45,6 @@ def NME_Decode_File(filename):
   length = len(file.readlines())
   file.close()
   lists = []
-  for i in range(0, length):
+  for i in range(1, length):
     lists.append(NME_Decode_Line(filename, i))
   return lists
