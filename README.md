@@ -1,4 +1,4 @@
-# pytiles Library
+# pythontiles Library
 - board_size(height, width)
 - reset_to_empty()
 - import_from_nme(filename)
